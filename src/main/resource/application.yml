@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/afms
+    username: root
+    password: 
+
+server:
+  port: 9090
+
+logging: 
+  file: logs/api
+  level: INFO
+
+custom:
+  #授权接口
+  auth_api: http://172.16.7.30:8081/queryserver/AuthAPI?CMD={username:"lch",password:}
+  #业务规则接口
+  hbc_api: http://172.16.7.30:8081/queryserver/QueryAPI?CMD=
+  #已添加业务规则列表
+  hbc_rule_list: 100001,100002,100003,100004,100005,100006,100007,100008,100009,100011,100012,100013,100014,100015,100016,100017,100018,100019,100020,100021,100022,100023,100024,100025
+  #金融属性分组,代码1
+  hbc_jinrong_list: 100024,100023,100022,100021
+  #异常行为分组,代码2
+  hbc_yichang_list: 100007,100008,100011,100013,100014,100025
+  #身份验证分组,代码3
+  hbc_shenfen_list: 100001,100002,100003,100004,100005,100006,100009,100010,100012,100015,100016,100017,100018,100019,100020

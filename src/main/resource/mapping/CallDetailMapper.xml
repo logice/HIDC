@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hbc315.HIDC.dao.CallDetailMapper" >
+  <resultMap id="BaseResultMap" type="hbc315.HIDC.model.CallDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="call_address" property="callAddress" jdbcType="VARCHAR" />
+    <result column="call_method" property="callMethod" jdbcType="TINYINT" />
+    <result column="call_type" property="callType" jdbcType="TINYINT" />
+    <result column="related_mobile" property="relatedMobile" jdbcType="VARCHAR" />
+    <result column="call_time" property="callTime" jdbcType="TIMESTAMP" />
+    <result column="call_duration" property="callDuration" jdbcType="INTEGER" />
+    <result column="call_fee" property="callFee" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, created_time, mobile, call_address, call_method, call_type, related_mobile, call_time, 
+    call_duration, call_fee
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from call_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from call_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="hbc315.HIDC.model.CallDetail" >
+    insert into call_detail (id, created_time, mobile, 
+      call_address, call_method, call_type, 
+      related_mobile, call_time, call_duration, 
+      call_fee)
+    values (#{id,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, 
+      #{callAddress,jdbcType=VARCHAR}, #{callMethod,jdbcType=TINYINT}, #{callType,jdbcType=TINYINT}, 
+      #{relatedMobile,jdbcType=VARCHAR}, #{callTime,jdbcType=TIMESTAMP}, #{callDuration,jdbcType=INTEGER}, 
+      #{callFee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="hbc315.HIDC.model.CallDetail" >
+    insert into call_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="callAddress != null" >
+        call_address,
+      </if>
+      <if test="callMethod != null" >
+        call_method,
+      </if>
+      <if test="callType != null" >
+        call_type,
+      </if>
+      <if test="relatedMobile != null" >
+        related_mobile,
+      </if>
+      <if test="callTime != null" >
+        call_time,
+      </if>
+      <if test="callDuration != null" >
+        call_duration,
+      </if>
+      <if test="callFee != null" >
+        call_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="callAddress != null" >
+        #{callAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="callMethod != null" >
+        #{callMethod,jdbcType=TINYINT},
+      </if>
+      <if test="callType != null" >
+        #{callType,jdbcType=TINYINT},
+      </if>
+      <if test="relatedMobile != null" >
+        #{relatedMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null" >
+        #{callTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null" >
+        #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="callFee != null" >
+        #{callFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="hbc315.HIDC.model.CallDetail" >
+    update call_detail
+    <set >
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="callAddress != null" >
+        call_address = #{callAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="callMethod != null" >
+        call_method = #{callMethod,jdbcType=TINYINT},
+      </if>
+      <if test="callType != null" >
+        call_type = #{callType,jdbcType=TINYINT},
+      </if>
+      <if test="relatedMobile != null" >
+        related_mobile = #{relatedMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null" >
+        call_time = #{callTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null" >
+        call_duration = #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="callFee != null" >
+        call_fee = #{callFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hbc315.HIDC.model.CallDetail" >
+    update call_detail
+    set created_time = #{createdTime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      call_address = #{callAddress,jdbcType=VARCHAR},
+      call_method = #{callMethod,jdbcType=TINYINT},
+      call_type = #{callType,jdbcType=TINYINT},
+      related_mobile = #{relatedMobile,jdbcType=VARCHAR},
+      call_time = #{callTime,jdbcType=TIMESTAMP},
+      call_duration = #{callDuration,jdbcType=INTEGER},
+      call_fee = #{callFee,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
